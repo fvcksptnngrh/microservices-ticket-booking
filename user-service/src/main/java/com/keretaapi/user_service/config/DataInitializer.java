@@ -24,14 +24,12 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // 1. Buat ROLE_USER jika belum ada
         Role userRole = roleRepository.findByName("ROLE_USER").orElseGet(() -> {
             Role newRole = new Role();
             newRole.setName("ROLE_USER");
             return roleRepository.save(newRole);
         });
 
-        // 2. Buat ROLE_ADMIN jika belum ada
         Role adminRole = roleRepository.findByName("ROLE_ADMIN").orElseGet(() -> {
             Role newRole = new Role();
             newRole.setName("ROLE_ADMIN");
@@ -43,9 +41,8 @@ public class DataInitializer implements CommandLineRunner {
             User adminUser = new User();
             adminUser.setUsername("admin_kai");
             adminUser.setEmail("admin@keretaapi.com");
-            // Enkripsi password menggunakan PasswordEncoder yang sama dengan saat login
             adminUser.setPassword(passwordEncoder.encode("passwordadmin"));
-            adminUser.setRoles(Set.of(adminRole)); // Beri peran ADMIN
+            adminUser.setRoles(Set.of(adminRole)); 
             userRepository.save(adminUser);
             System.out.println(">>> Akun admin 'admin_kai' berhasil dibuat.");
         }

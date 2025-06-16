@@ -36,4 +36,9 @@ public class AuthController {
              return ResponseEntity.status(401).body(new MessageResponse("Error: Invalid credentials!"));
         }
     }
+
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+        return ResponseEntity.ok("Test OK");
+    }
 }
