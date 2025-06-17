@@ -5,7 +5,6 @@ public class RegisterRequest {
     private String email;
     private String password;
 
-    // --- GETTERS DITAMBAHKAN MANUAL ---
     public String getUsername() {
         return username;
     }
@@ -18,7 +17,6 @@ public class RegisterRequest {
         return password;
     }
 
-    // --- SETTERS (untuk kelengkapan) ---
     public void setUsername(String username) {
         this.username = username;
     }

@@ -4,7 +4,6 @@ public class LoginRequest {
     private String username;
     private String password;
 
-    // --- GETTERS DITAMBAHKAN MANUAL ---
     public String getUsername() {
         return username;
     }
@@ -13,7 +12,6 @@ public class LoginRequest {
         return password;
     }
 
-    // --- SETTERS (untuk kelengkapan) ---
     public void setUsername(String username) {
         this.username = username;
     }

@@ -17,9 +17,10 @@ public class Schedule {
     private LocalDateTime arrivalTime;
     private double price;
 
+    // Constructor kosong
     public Schedule() {}
 
-    // Getters & Setters
+    // --- Getters and Setters Manual ---
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

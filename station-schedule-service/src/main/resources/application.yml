@@ -17,3 +17,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+jwt:
+  secret: MySecretKeyIsVeryLongAndSecureAndRandom_ChangeThisPlease1234567890
+  expiration:
+    ms: 86400000 # 24 jam

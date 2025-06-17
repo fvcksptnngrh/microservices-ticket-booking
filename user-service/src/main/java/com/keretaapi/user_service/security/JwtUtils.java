@@ -2,13 +2,15 @@ package com.keretaapi.user_service.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority; // <-- IMPORT BARU
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import jakarta.annotation.PostConstruct;
+
 import java.security.Key;
 import java.util.Date;
 
@@ -30,9 +32,21 @@ public class JwtUtils {
     }
 
     public String generateJwtToken(Authentication authentication) {
-        UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
+        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+
+        // --- AWAL MODIFIKASI ---
+        // 1. Ambil role pertama dari daftar authorities pengguna.
+        String role = userPrincipal.getAuthorities().stream()
+                .findFirst()
+                .map(GrantedAuthority::getAuthority)
+                .map(authority -> authority.replace("ROLE_", "")) // 2. Hapus prefix "ROLE_" agar bersih
+                .orElse(null);
+        // --- AKHIR MODIFIKASI ---
+
         return Jwts.builder()
                 .setSubject((userPrincipal.getUsername()))
+                .claim("role", role)
+                .claim("userId", userPrincipal.getId())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(key, SignatureAlgorithm.HS512)

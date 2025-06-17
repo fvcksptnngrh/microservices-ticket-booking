@@ -3,17 +3,16 @@ package com.keretaapi.station_schedule_service.service;
 import com.keretaapi.station_schedule_service.dto.ScheduleDTO;
 import com.keretaapi.station_schedule_service.entity.Schedule;
 import com.keretaapi.station_schedule_service.repository.ScheduleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ScheduleService {
-    private final ScheduleRepository repo;
-
-    public ScheduleService(ScheduleRepository repo) {
-        this.repo = repo;
-    }
+    
+    @Autowired
+    private ScheduleRepository repo;
 
     public Schedule save(ScheduleDTO dto) {
         Schedule s = new Schedule();

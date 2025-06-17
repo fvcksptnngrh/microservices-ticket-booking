@@ -18,11 +18,15 @@ spring:
         - id: station-schedule-service-schedules
           uri: lb://station-schedule-service
           predicates:
-            - Path=/schedule/**
+            - Path=/api/schedules/**
         - id: station-schedule-service-stations
           uri: lb://station-schedule-service
           predicates:
-            - Path=/station/**
+            - Path=/api/stations/**
+        - id: transaction-service
+          uri: lb://transaction-service
+          predicates:
+            - Path=/api/transactions/**
         
 eureka:
   client:

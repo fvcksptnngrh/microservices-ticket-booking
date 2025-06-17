@@ -35,6 +35,7 @@ public class UserService {
         UserProfile profile = userProfileRepository.findById(currentUser.getId()).orElse(new UserProfile());
 
         UserProfileDto dto = new UserProfileDto();
+        dto.setId(currentUser.getId());
         dto.setUsername(currentUser.getUsername());
         dto.setEmail(currentUser.getEmail());
         dto.setFullName(profile.getFullName());

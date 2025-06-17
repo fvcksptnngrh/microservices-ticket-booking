@@ -12,7 +12,7 @@ public class ScheduleDTO {
     private double price;
 
     public ScheduleDTO() {}
-    
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

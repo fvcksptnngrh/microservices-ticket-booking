@@ -16,7 +16,7 @@ public class Station {
     // Constructor kosong
     public Station() {}
 
-    // Getter dan Setter manual
+    // --- Getters and Setters Manual ---
     public Long getId() {
         return id;
     }
