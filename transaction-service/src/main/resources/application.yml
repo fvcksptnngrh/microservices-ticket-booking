@@ -6,7 +6,7 @@ spring:
     name: transaction-service
   data:
     mongodb:
-      uri: mongodb+srv://adhi:honey@dbtts.fvihxmj.mongodb.net/db_transaction_service?retryWrites=true&w=majority
+      uri: insert your MongoDB URI here
 
 eureka:
   client:
